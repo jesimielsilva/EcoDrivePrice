@@ -1,16 +1,15 @@
-package com.example.alcoolougasolina;
+package com.example.ecodriveprice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
+
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
 
     private TextView campoResultado;
     private AutoCompleteTextView autoCompleteCarros;
@@ -51,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<Carros> carroAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, carrosList);
         autoCompleteCarros.setAdapter(carroAdapter);
+
+
     }
 
     public void calcular(View view){

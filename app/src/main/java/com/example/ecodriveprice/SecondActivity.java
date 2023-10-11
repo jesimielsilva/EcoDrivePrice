@@ -1,10 +1,10 @@
-package com.example.alcoolougasolina;
+package com.example.ecodriveprice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
