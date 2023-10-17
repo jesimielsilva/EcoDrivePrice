@@ -2,10 +2,12 @@ package com.example.ecodriveprice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.RadioGroup;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView campoResultado;
     private AutoCompleteTextView autoCompleteCarros;
     private TextInputEditText distancia, precoCombustivel;
+    private RadioGroup radioGroup;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         autoCompleteCarros = findViewById(R.id.autoCompleteCarros);
         distancia = findViewById(R.id.editDistancia);
         precoCombustivel = findViewById(R.id.precoCombustivel);
+        radioGroup = findViewById(R.id.radioCombustivel);
 
         List<Carros> carrosList = new ArrayList<>();
         carrosList.add(new Carros("Polo 2018 1.6", 8.7, 12.9, 10.0, 14.4));
@@ -50,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Carros> carroAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, carrosList);
         autoCompleteCarros.setAdapter(carroAdapter);
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Fecha o teclado quando o RadioGroup for clicado
+                hideKeyboard();
+            }
+        });
 
     }
 
@@ -145,5 +156,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 
 }
